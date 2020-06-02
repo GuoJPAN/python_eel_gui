@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Eel桌面小工具</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 开始定义样式 -->
+    <style type="text/css">
+        #input {
+            display: inline-block;
+            float: left;
+            width: 50%;
+            margin-left: 10px;
+        }
+
+        #output_btn {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        body{
+            margin: 10px;
+        }
+
+        #content{
+            margin: 5px;
+            padding: 5px;
+            background-color: antiquewhite;
+            border-radius: 6px;
+            min-height: 70px;
+            max-height: 100%;
+        }
+    </style>
+    <!-- 结束定义样式 -->
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+<body>
+    <input type="text" class="form-control" id="input">
+    <button type="button" class="btn btn-primary" id="output_btn" onclick="doThis()">输出内容</button>
+    <div id="content">
+    </div>
+</div>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+    // 调用python中的函数,注意需要在定义前加上async声明异步
+    async function doThis() {
+        var str = $("#input").val();
+        let content = await eel.print_content(str)();  //这里用let不用var,调用的python函数后面是两对括号
+        $("#content").text(content);
+    }
+
+    // 将js中的函数暴露给python,这个貌似不怎么需要用
+    // eel.expose(js_fun);
+    //
+    // function js_fun(a) {
+    //     return ('这是调用js中函数返回的结果：' + a);
+    // }
+</script>
+</body>
+</html>

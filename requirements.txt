@@ -1,0 +1,12 @@
+bottle==0.12.18
+bottle-websocket==0.2.9
+cffi==1.14.0
+Eel==0.12.4
+future==0.18.2
+gevent==20.5.2
+gevent-websocket==0.10.1
+greenlet==0.4.15
+pycparser==2.20
+whichcraft==0.6.1
+zope.event==4.4
+zope.interface==5.1.0
